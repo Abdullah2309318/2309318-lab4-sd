@@ -14,12 +14,9 @@ searchButton.addEventListener('click', () => {
 
 async function fetchCountryData(name) {
   try {
-    // Clear old data
     countryInfoSection.innerHTML = '';
     borderingCountriesSection.innerHTML = '';
 
-    // Fetch main country info from REST Countries API
-    // The 'fullText=true' parameter ensures we match the exact country name (e.g., "South Africa").
     const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`);
     if (!response.ok) {
       throw new Error('Country not found. Please check the spelling or try another country.');
@@ -28,7 +25,6 @@ async function fetchCountryData(name) {
     const data = await response.json();
     const country = data[0];
 
-    // Extract relevant info
     const countryNameCommon = country.name?.common || 'N/A';
     const capital = country.capital ? country.capital[0] : 'N/A';
     const population = country.population ? country.population.toLocaleString() : 'N/A';
@@ -44,7 +40,7 @@ async function fetchCountryData(name) {
       <img class="country-flag" src="${flag}" alt="Flag of ${countryNameCommon}">
     `;
 
-    // Check for bordering countries
+    // Bordering countries
     if (country.borders && country.borders.length > 0) {
       await fetchBorderCountries(country.borders);
     } else {
@@ -52,15 +48,12 @@ async function fetchCountryData(name) {
     }
 
   } catch (error) {
-    // Display error message
     countryInfoSection.innerHTML = `<p>Error: ${error.message}</p>`;
     borderingCountriesSection.innerHTML = '';
   }
 }
 
 async function fetchBorderCountries(borders) {
-  // 'borders' is an array of country codes (e.g., ["NAM", "BWA", "ZWE"])
-  // We can fetch all of them at once by joining them in a single query
   const borderCodes = borders.join(',');
 
   try {
@@ -70,7 +63,6 @@ async function fetchBorderCountries(borders) {
     }
     const borderData = await borderResponse.json();
 
-    // Construct the HTML for each bordering country
     let borderingCountriesHTML = '<h3>Bordering Countries:</h3>';
     borderData.forEach((borderCountry) => {
       const borderCountryName = borderCountry.name?.common || 'Unknown';
