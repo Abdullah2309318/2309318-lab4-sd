@@ -1,42 +1,53 @@
 body {
-    font-family: Arial, sans-serif;
+  background-color: grey;
+    font-family: Comic 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
     margin: 20px;
   }
   
   h1 {
+    font-family: monospace 'Gills Sans';
+    text-align: center;
+    color:aliceblue;
     margin-bottom: 20px;
   }
   
   .search-container {
+    text-align-last: center;
     margin-bottom: 20px;
   }
   
   #country-input {
+    align-items: center;
     padding: 8px;
     width: 200px;
   }
   
   #search-button {
+    align-content: center;
     padding: 8px 12px;
     cursor: pointer;
   }
   
   #country-info, #bordering-countries {
+    color: aliceblue;
+    text-align-last: center;
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ddd;
   }
   
   .country-flag {
-    width: 200px;
+    width: 400px;
     display: block;
     margin: 10px 0;
   }
   
   .border-country {
+    width: 200px;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    color:goldenrod;
   }
   
   .border-country img {

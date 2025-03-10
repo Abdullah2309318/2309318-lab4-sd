@@ -31,7 +31,7 @@ async function fetchCountryData(name) {
     const region = country.region || 'N/A';
     const flag = country.flags?.png || '';
 
-    // Display main country info
+    // Main Country
     countryInfoSection.innerHTML = `
       <h2>${countryNameCommon}</h2>
       <p><strong>Capital:</strong> ${capital}</p>
