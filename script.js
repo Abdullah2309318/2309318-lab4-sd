@@ -44,11 +44,11 @@ async function fetchCountryData(name) {
     if (country.borders && country.borders.length > 0) {
       await fetchBorderCountries(country.borders);
     } else {
-      borderingCountriesSection.innerHTML = '<p>No bordering countries found.</p>';
+      borderingCountriesSection.innerHTML = 'No bordering countries found.';
     }
 
   } catch (error) {
-    countryInfoSection.innerHTML = `<p>Error: ${error.message}</p>`;
+    countryInfoSection.innerHTML = `Error: ${error.message}`;
     borderingCountriesSection.innerHTML = '';
   }
 }
@@ -77,6 +77,6 @@ async function fetchBorderCountries(borders) {
 
     borderingCountriesSection.innerHTML = borderingCountriesHTML;
   } catch (error) {
-    borderingCountriesSection.innerHTML = `<p>Error: ${error.message}</p>`;
+    borderingCountriesSection.innerHTML = `Error: ${error.message}`;
   }
 }
